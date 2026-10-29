@@ -128,12 +128,13 @@ mabsa_travel/
 
 ### MACSAA Dataset
 
-Dự án sử dụng bộ dữ liệu **MACSAA** được cung cấp trên Kaggle làm nguồn dữ liệu phục vụ quá trình xây dựng và thực nghiệm mô hình phân tích cảm xúc đa phương thức theo khía cạnh (Multimodal Aspect-Based Sentiment Analysis – MABSA).
+Dự án sử dụng bộ dữ liệu MACSAA làm nguồn dữ liệu phục vụ quá trình xây dựng, huấn luyện và thực nghiệm mô hình phân tích cảm xúc đa phương thức theo khía cạnh (Multimodal Aspect-Based Sentiment Analysis – MABSA).
 
-- **Tên bộ dữ liệu:** MACSAA
-- **Nguồn dữ liệu:** [MACSAA – Kaggle](https://www.kaggle.com/datasets/nguynquy/macsaa?resource=download)
-- **Mục đích sử dụng:** Phục vụ huấn luyện và thực nghiệm mô hình MABSA theo phạm vi sử dụng thực tế của dự án.
-- **Quy trình xử lý:** Dữ liệu cần được kiểm tra, tiền xử lý, gán nhãn và chia tập theo quy trình mô tả tại Chương 3 trước khi đưa vào huấn luyện.
-- **Lưu trữ:** Bộ dữ liệu gốc không được đưa trực tiếp vào repository GitHub. Người dùng tải dữ liệu từ nguồn Kaggle và tuân thủ điều khoản sử dụng, giấy phép của bộ dữ liệu.
+- **Dataset name:** MACSAA
+- **Original source:** [MACSAA Dataset on Kaggle](https://www.kaggle.com/datasets/nguynquy/macsaa)
+- **Dataset download:** [Download MACSAA from Google Drive](https://drive.google.com/file/d/1qbChChzBHYLk61_bBYFKmAJFLbO4FIsP/view?usp=sharing)
+- **Purpose:** Data preparation, model training and experimentation for the MABSA-Travel project.
+- **Preprocessing:** The data should be checked, cleaned, annotated where necessary, and split into training, validation and test sets before model training, following the workflow described in Chapter 3.
+- **Storage policy:** The dataset files are hosted externally and are not included in this GitHub repository. Download the data from the links above and follow the applicable dataset license and sharing terms.
 
-**Lưu ý:** Các kết quả thực nghiệm trong báo cáo cần được xác nhận bằng những lần chạy thực tế trên dữ liệu đã xử lý. Việc trích dẫn nguồn dữ liệu không đồng nghĩa với việc toàn bộ dữ liệu đã được sử dụng hoặc mô hình đã được huấn luyện thành công.
+**Reproducibility note:** Experimental results reported in the project should be based on actual runs using the processed dataset. The presence of a dataset link does not by itself establish that training has been completed or that reported metrics have been reproduced.
