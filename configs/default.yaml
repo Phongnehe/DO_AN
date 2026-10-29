@@ -1,0 +1,47 @@
+# Cấu hình mô hình đề xuất (Chương 4) với siêu tham số của Bảng 5.1.
+# Ghi đè từ dòng lệnh: python scripts/train.py --config configs/default.yaml --set train.batch_size=8
+
+data:
+  train: data/processed/splits/train.jsonl
+  val: data/processed/splits/val.jsonl
+  test: data/processed/splits/test.jsonl
+  max_seq_len: 256          # Max sequence length
+  image_size: 224           # Image size 224×224
+  max_images: 5             # tối đa 5 ảnh / đánh giá
+  max_aspects: 12
+  segmenter: vncorenlp      # vncorenlp | underthesea | none  (PhoBERT cần văn bản đã tách từ)
+  vncorenlp_dir: vncorenlp  # thư mục lưu VnCoreNLP (tự tải ở lần chạy đầu, cần Java)
+
+model:
+  type: mabsa               # mabsa | text_only | image_only | early_fusion | late_fusion
+  text_encoder: phobert     # phobert | phobert-large | xlmr | videberta
+  image_encoder: vit        # vit | clip | resnet
+  hidden_dim: 768
+  use_contrastive: true     # mô-đun Contrastive Learning cấp khía cạnh (mục 4.5)
+  use_cross_attention: true # tầng kết hợp Cross-Attention (mục 4.6)
+  fusion: gated             # gated | concat
+  attn_heads: 8
+  proj_dim: 256             # chiều của projection head g_t, g_v
+  tau: 0.07                 # Temperature τ
+  alpha: 0.7                # trọng số classification loss
+  beta: 0.3                 # trọng số contrastive loss
+  dropout: 0.1
+  freeze_image_encoder: false
+
+train:
+  seed: 42
+  device: auto              # auto | cuda | cpu | mps
+  epochs: 20                # Max epochs
+  batch_size: 16
+  eval_batch_size: 32
+  lr: 2.0e-5                # learning rate cho PhoBERT / ViT (Adam)
+  head_lr: 1.0e-4           # learning rate cho các tầng mới khởi tạo
+  weight_decay: 0.0         # 0 → Adam thuần
+  warmup_ratio: 0.1         # warm-up tuyến tính 10% số bước
+  early_stopping_patience: 3
+  max_grad_norm: 1.0
+  grad_accum_steps: 1       # tăng lên 2–4 nếu GPU thiếu bộ nhớ (giảm batch_size tương ứng)
+  fp16: true                # mixed precision khi có GPU
+  imbalance: weighted_ce    # weighted_ce | oversample | none  (mục 4.9)
+  num_workers: 0            # Windows nên để 0
+  output_dir: outputs/mabsa_default

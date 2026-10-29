@@ -1,0 +1,39 @@
+base: default.yaml
+data:
+  train: data/processed/vimacsa/train.jsonl
+  val: data/processed/vimacsa/val.jsonl
+  test: data/processed/vimacsa/test.jsonl
+  max_seq_len: 160
+  image_size: 224
+  max_images: 7
+  segmenter: underthesea
+model:
+  type: mabsa
+  text_encoder: phobert
+  image_encoder: vit
+  attn_implementation: eager
+  hidden_dim: 256
+  attn_heads: 4
+  proj_dim: 128
+  image_pool_grid: 7
+  aspect_representation: category_attention
+  text_auxiliary_head: true
+  text_aux_loss_weight: 1.0
+  supported_aspects: [FOOD, SPACE, SERVICE, LOCATION, ROOM, FACILITY]
+  freeze_text_encoder: true
+  freeze_image_encoder: true
+  alpha: 1.0
+  beta: 0.1
+  dropout: 0.2
+train:
+  device: mps
+  epochs: 30
+  batch_size: 24
+  eval_batch_size: 24
+  lr: 0.0005
+  head_lr: 0.0005
+  weight_decay: 0.01
+  early_stopping_patience: 5
+  fp16: false
+  output_dir: outputs/retrained
+  selection_metric: joint_macro_f1

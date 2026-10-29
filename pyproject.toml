@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mabsa-travel"
+version = "1.0.0"
+description = "Phân tích cảm xúc đa phương thức theo khía cạnh cho đánh giá du lịch tiếng Việt (PhoBERT + ViT + Contrastive Learning)"
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["src"]

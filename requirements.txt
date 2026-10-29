@@ -1,0 +1,23 @@
+# Python 3.9 – 3.11 (khuyến nghị 3.10). Có GPU NVIDIA: cài PyTorch bản CUDA theo hướng dẫn ở README trước.
+torch>=2.0
+torchvision>=0.15
+transformers==4.44.2
+sentencepiece
+protobuf
+numpy>=1.24
+pandas>=2.1
+scikit-learn>=1.2
+pillow>=9.5
+matplotlib>=3.7
+pyyaml>=6.0
+tqdm>=4.65
+imagehash>=4.3
+# Tách từ tiếng Việt cho PhoBERT (VnCoreNLP cần Java 8+); underthesea là phương án dự phòng
+py_vncorenlp>=0.1.4
+underthesea==6.8.4
+pyarrow==17.0.0
+# Ứng dụng minh họa (Chương 6)
+streamlit>=1.28
+altair>=5.0
+# Kiểm thử
+pytest>=7.0

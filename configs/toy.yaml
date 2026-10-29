@@ -1,0 +1,31 @@
+# Chạy thử toàn bộ pipeline trên CPU trong vài phút, không cần tải mô hình.
+# Dữ liệu giả: python scripts/make_toy_data.py ; bộ mã hóa "tiny" khởi tạo ngẫu nhiên.
+base: default.yaml
+
+data:
+  train: data/toy/splits/train.jsonl
+  val: data/toy/splits/val.jsonl
+  test: data/toy/splits/test.jsonl
+  max_seq_len: 64
+  image_size: 64
+  max_images: 2
+  segmenter: none
+
+model:
+  text_encoder: tiny
+  image_encoder: tiny
+  tiny_vocab: data/toy/vocab.txt
+  tiny_patch: 16            # ảnh 64×64 → lưới 4×4 vùng
+  hidden_dim: 64
+  attn_heads: 4
+  proj_dim: 32
+
+train:
+  device: cpu
+  epochs: 4
+  batch_size: 8
+  lr: 1.0e-3
+  head_lr: 1.0e-3
+  early_stopping_patience: 2
+  fp16: false
+  output_dir: outputs/toy
